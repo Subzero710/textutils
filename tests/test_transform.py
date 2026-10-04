@@ -1,4 +1,4 @@
-from textutils.transform import word_count, character_count, reverse
+from textutils.transform import word_count, character_count, reverse, snake_case
 
 
 def test_word_count_basic():
@@ -26,3 +26,10 @@ def test_word_count_tabs_and_newlines():
 
 def test_reverse_empty():
     assert reverse("") == ""
+
+
+def test_snack_case():
+    assert snake_case("doc ia") == "doc_ia"
+    
+def test_snack_case_double_space():
+    assert snake_case("salut  toi") == "salut_toi"

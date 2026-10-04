@@ -12,6 +12,7 @@ The library currently provides four utilities:
 - `character_count(text)` — counts every character in the input text.
 - `reverse(text)` — returns the input text in reverse order.
 - `capitalize_words(text)` — uppercases the first character of each word when that character is a lowercase ASCII letter; words are separated by spaces, tabs, or newlines.
+- `snack_case(text)` - Replace space by underscore in the text and all the text is lowercase.
 
 ## Project structure
 
