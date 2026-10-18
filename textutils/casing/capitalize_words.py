@@ -29,7 +29,7 @@ def capitalize_words(text):
     capitalize_next = True
 
     for char in text:
-        if char in " ":
+        if char.isspace():
             result += char
             capitalize_next = True
         elif capitalize_next:

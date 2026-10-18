@@ -28,7 +28,7 @@ def word_count(text):
     in_word = False
 
     for char in text:
-        if char not in " ":
+        if not char.isspace():
             if not in_word:
                 count += 1
                 in_word = True
