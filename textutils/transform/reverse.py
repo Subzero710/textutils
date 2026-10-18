@@ -1,12 +1,27 @@
+"""Text-reversal utility."""
+
+from .._validation import _ensure_text
+
+
 def reverse(text):
     """Reverse the characters of a text.
 
-    Args:
-        text (str): The text to reverse.
+    Parameters
+    ----------
+    text : str
+        Text to reverse.
 
-    Returns:
-        str: A new string containing the characters in reverse order.
+    Returns
+    -------
+    str
+        New string containing the characters in reverse order.
+
+    Raises
+    ------
+    TypeError
+        If ``text`` is not a string.
     """
+    _ensure_text(text)
     reversed_text = ""
 
     for char in text:

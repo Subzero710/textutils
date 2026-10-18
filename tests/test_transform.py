@@ -1,35 +1,56 @@
-from textutils.transform import word_count, character_count, reverse, snake_case
+import pytest
+
+from textutils import character_count, reverse, snake_case, word_count
 
 
-def test_word_count_basic():
-    assert word_count("hello world") == 2
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("hello world", 2),
+        ("", 0),
+        ("hello   world", 2),
+        ("hello	world  python", 3),
+        ("   ", 0),
+    ],
+)
+def test_word_count(text, expected):
+    assert word_count(text) == expected
 
 
-def test_word_count_empty():
-    assert word_count("") == 0
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [("hello", 5), ("", 0), ("hello world", 11), ("é", 1)],
+)
+def test_character_count(text, expected):
+    assert character_count(text) == expected
 
 
-def test_word_count_multiple_spaces():
-    assert word_count("hello   world") == 2
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [("hello", "olleh"), ("", ""), ("a", "a"), ("été", "été")],
+)
+def test_reverse(text, expected):
+    assert reverse(text) == expected
 
 
-def test_character_count():
-    assert character_count("hello") == 5
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("doc ia", "doc_ia"),
+        ("salut  toi", "salut_toi"),
+        ("Hello World", "hello_world"),
+        (" hello	world   python ", "hello_world_python"),
+        ("", ""),
+    ],
+)
+def test_snake_case(text, expected):
+    assert snake_case(text) == expected
 
 
-def test_reverse():
-    assert reverse("hello") == "olleh"
-
-def test_word_count_tabs_and_newlines():
-    assert word_count("hello\tworld\npython") == 3
-
-
-def test_reverse_empty():
-    assert reverse("") == ""
-
-
-def test_snack_case():
-    assert snake_case("doc ia") == "doc_ia"
-    
-def test_snack_case_double_space():
-    assert snake_case("salut  toi") == "salut_toi"
+@pytest.mark.parametrize(
+    "function",
+    [word_count, character_count, reverse, snake_case],
+)
+def test_transform_functions_reject_non_string(function):
+    with pytest.raises(TypeError, match="text must be a str"):
+        function(123)

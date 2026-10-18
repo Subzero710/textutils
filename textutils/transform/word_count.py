@@ -1,19 +1,34 @@
+"""Word-counting utility."""
+
+from .._validation import _ensure_text
+
+
 def word_count(text):
     """Count the number of words in a text.
 
     Words are separated by spaces, tabs, or newline characters.
 
-    Args:
-        text (str): The text to analyze.
+    Parameters
+    ----------
+    text : str
+        Text to analyze.
 
-    Returns:
-        int: The number of words contained in the text.
+    Returns
+    -------
+    int
+        Number of words contained in ``text``.
+
+    Raises
+    ------
+    TypeError
+        If ``text`` is not a string.
     """
+    _ensure_text(text)
     count = 0
     in_word = False
 
     for char in text:
-        if char != " " and char != "\n" and char != "\t":
+        if char not in " ":
             if not in_word:
                 count += 1
                 in_word = True

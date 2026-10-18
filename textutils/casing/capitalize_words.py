@@ -1,20 +1,35 @@
+"""Word-capitalization utility."""
+
+from .._validation import _ensure_text
+
+
 def capitalize_words(text):
-    """Capitalize the first letter of each word in a text.
+    """Capitalize the first ASCII letter of each word.
 
     Words are separated by spaces, tabs, or newline characters.
 
-    Args:
-        text (str): The text whose words will be capitalized.
+    Parameters
+    ----------
+    text : str
+        Text whose words will be capitalized.
 
-    Returns:
-        str: The text with the first lowercase ASCII letter of each
-        word converted to uppercase.
+    Returns
+    -------
+    str
+        Text with the first lowercase ASCII letter of each word converted
+        to uppercase.
+
+    Raises
+    ------
+    TypeError
+        If ``text`` is not a string.
     """
+    _ensure_text(text)
     result = ""
     capitalize_next = True
 
     for char in text:
-        if char == " " or char == "\n" or char == "\t":
+        if char in " ":
             result += char
             capitalize_next = True
         elif capitalize_next:
