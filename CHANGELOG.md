@@ -2,18 +2,31 @@
 
 All notable changes to this project are documented in this file.
 
-## [Unreleased]
+## [0.1.0] - 2026-10-29
 
 ### Added
 
-- Initial open-source project structure.
-- MIT License and Python `.gitignore`.
 - `word_count(text)` utility.
 - `character_count(text)` utility.
 - `reverse(text)` utility.
 - `capitalize_words(text)` utility.
-- Unit tests for transformation utilities.
-- Unit tests for casing utilities.
-- Python package configuration with `pyproject.toml`.
-- `pytest` as an optional test dependency.
-- Project documentation and usage examples.
+- `snake_case(text)` utility.
+- Public API through `textutils/__init__.py`.
+- Unit tests for normal inputs and edge cases.
+- Expected-exception tests for invalid input types.
+- Test coverage reporting with `pytest-cov`.
+- Package configuration with `pyproject.toml`.
+- Black and Ruff development tooling.
+- Automated CI workflow.
+- Automated PyPI release workflow using Trusted Publishing.
+
+### Changed
+
+- Organized utilities into dedicated packages and modules.
+- Added NumPy-style public API docstrings.
+- Added a private input-validation helper.
+
+### Fixed
+
+- Correct handling of tabs and other whitespace in `word_count`.
+- Correct handling of whitespace in `capitalize_words`.
